@@ -1,0 +1,68 @@
+@model IEnumerable<NETCOperations.Models.OpsViewModels.scoViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Sco</h2>
+<hr/>
+
+<form asp-controller="scoViewModels" asp-action="Index" class="form-inline">
+    <input type="text" placeholder="Search Hostname" name="searchString" class="form-control"/>
+    <input type="submit" class="btn btn-warning" value="Search"/>
+</form>
+<br/>
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+<br/>
+<table class="table table-hover">
+    <thead>
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.HostName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APocPrimary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AfterHourCallback)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OSPocPrimary)
+        </th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.HostName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APocPrimary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AfterHourCallback)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OSPocPrimary)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.ID" class="btn-sm btn-primary">Edit</a>
+            <a asp-action="Details" asp-route-id="@item.ID" class="btn-sm btn-info">Details</a>
+            <a asp-action="Delete" asp-route-id="@item.ID" class="btn-sm btn-danger">Delete</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>

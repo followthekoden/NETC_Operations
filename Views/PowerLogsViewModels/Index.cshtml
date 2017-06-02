@@ -1,0 +1,97 @@
+@using Microsoft.CodeAnalysis
+@model IEnumerable<NETCOperations.Models.OpsViewModels.PowerLogsViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 class="text-capitalize">Power logs</h2>
+<hr/>
+
+<form asp-controller="PowerLogsViewModels" asp-action="Index" class="form-inline">
+    <input type="text" placeholder="Search Date" name="searchString" class="form-control"/>
+    <input type="submit" class="btn btn-warning" value="Search"/>
+</form>
+<br/>
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+<br />
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Day)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.kva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kw)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.A)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C)
+        </th>
+
+
+        
+        <th>
+            @Html.DisplayNameFor(model => model.pf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ups)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Day)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kva)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Kw)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.A)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.B)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ups)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.ID" class="btn-sm btn-primary">Edit</a>
+            <a asp-action="Details" asp-route-id="@item.ID" class="btn-sm btn-info">Details</a>
+            <a asp-action="Delete" asp-route-id="@item.ID" class="btn-sm btn-danger">Delete</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>

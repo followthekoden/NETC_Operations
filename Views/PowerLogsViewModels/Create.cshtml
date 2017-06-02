@@ -1,0 +1,102 @@
+@model NETCOperations.Models.OpsViewModels.PowerLogsViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>PowerLogsViewModel</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Date" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Date" class="form-control" id="datepicker"/>
+                <span asp-validation-for="Date" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Day" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Day" class="form-control">
+                    <option name=Saturday value=Saturday> Saturday </option>
+                    <option name=Sunday value=Sunday> Sunday </option>
+                    <option name=Monday value=Monday> Monday </option>
+                    <option name=Tuesday value=Tuesday> Tuesday </option>
+                    <option name=Wednesday value=Wednesday> Wednesday </option>
+                    <option name=Thursday value=Thursday> Thursday </option>
+                    <option name=Friday value=Friday> Friday </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="kva" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="kva" class="form-control"/>
+                <span asp-validation-for="kva" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Kw" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Kw" class="form-control" />
+                <span asp-validation-for="Kw" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="A" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="A" class="form-control" />
+                <span asp-validation-for="A" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="B" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="B" class="form-control" />
+                <span asp-validation-for="B" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="C" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="C" class="form-control" />
+                <span asp-validation-for="C" class="text-danger" />
+            </div>
+        </div>
+        
+       
+        
+        
+        <div class="form-group">
+            <label asp-for="pf" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="pf" class="form-control" />
+                <span asp-validation-for="pf" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ups" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ups" class="form-control" />
+                <span asp-validation-for="ups" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

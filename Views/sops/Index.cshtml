@@ -1,0 +1,72 @@
+@model IEnumerable<NETCOperations.Models.OpsViewModels.sop>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 class="text-capitalize">Sop </h2>
+<hr />
+
+<form asp-controller="sops" asp-action="Index" class="form-inline">
+    <input type="text" placeholder="Search File" name="searchString" class="form-control" />
+    <input type="submit" class="btn btn-warning" value="Search/Clear" />
+</form>
+<br />
+
+<p>
+    <a asp-action="Create">Upload</a>
+</p>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Date Modified
+        </th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.shortDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edited)
+        </td>
+
+        <td>
+            <button type="button" class="btn-default btn-sm" data-toggle="modal" data-target="#@item.Id">
+                View
+            </button>
+            <a asp-action="Delete" asp-route-id="@item.Id" class="btn-sm btn-danger">Delete</a>
+        </td>
+    </tr>
+    <div class="modal fade" id="@item.Id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">@item.Name</h4>
+                </div>
+                <div class="modal-body">
+                    <object type="application/pdf" data="@item.Location" width="100%" height="640">pdf</object>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+    </tbody>
+</table>
